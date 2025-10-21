@@ -1,0 +1,16 @@
+# Frontend (Vue.js)
+travel_frontend/node_modules/
+travel_frontend/dist/
+travel_frontend/.env
+
+# Backend (Spring)
+travel_backend/target/
+travel_backend/.idea/
+travel_backend/*.iml
+travel_backend/.mvn/
+travel_backend/.classpath
+travel_backend/.project
+
+# 공통
+*.log
+.DS_Store
