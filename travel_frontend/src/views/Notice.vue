@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h1></h1>
+  <div class="main-box">
+    <h2>공지사항</h2>
+    <p>공지 리스트!!!(나중에 연결)</p>
   </div>
 </template>
 
 <script>
-export default {}
+// eslint-disable-next-line vue/multi-word-component-names
+export default { name: 'Notice' }
 </script>

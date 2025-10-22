@@ -1,7 +1,7 @@
 <template>
   <div>
+    <h1 class="text-center mt-6">여행가자에 오신 것을 환영합니다!</h1>
     <LoginForm />
-    <p class="mt-4 text-center">여행가자에 오신 것을 환영합니다!</p>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 import LoginForm from '@/components/LoginForm.vue'
 
 export default {
+  name: 'MainHome',
   components: { LoginForm },
 }
 </script>
