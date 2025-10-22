@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1></h1>
+  <div class="main-box">
+    <h2>My Page</h2>
+    <p>회원 정보!!!(나중에 연결)</p>
   </div>
 </template>
 
