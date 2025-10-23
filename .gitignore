@@ -1,16 +1,33 @@
-# Frontend (Vue.js)
-travel_frontend/node_modules/
-travel_frontend/dist/
-travel_frontend/.env
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Backend (Spring)
-travel_backend/target/
-travel_backend/.idea/
-travel_backend/*.iml
-travel_backend/.mvn/
-travel_backend/.classpath
-travel_backend/.project
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# 공통
-*.log
-.DS_Store
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
