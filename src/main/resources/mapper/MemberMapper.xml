@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.travel_backend.mapper.MemberMapper">
+
+    <resultMap id="memberResultMap" type="com.example.travel_backend.model.vo.Member">
+        <id property="userId" column="USER_ID"/>
+        <result property="email" column="EMAIL"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="nickname" column="NICKNAME"/>
+        <result property="socialType" column="SOCIAL_TYPE"/>
+    </resultMap>
+
+    <select id="countByEmail" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM member
+        WHERE email = #{email}
+    </select>
+
+    <insert id="signup" parameterType="com.example.travel_backend.controller.dto.SignupRequest">
+        INSERT INTO member (username, password, name, email, role, social_provider, social_id, created_at, updated_at)
+        VALUES (#{username}, #{password}, #{name}, #{email}, #{role}, #{socialProvider}, #{socialId}, NOW(), NOW())
+    </insert>
+
+</mapper>
+

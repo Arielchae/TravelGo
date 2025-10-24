@@ -1,50 +1,39 @@
 package com.example.travel_backend.controller;
 
-
-import com.example.travel_backend.model.vo.Auth;
+import com.example.travel_backend.controller.dto.LoginRequest;
+import com.example.travel_backend.controller.dto.SignupRequest;
 import com.example.travel_backend.model.service.AuthService;
-import jakarta.servlet.http.HttpSession;
+import com.example.travel_backend.model.vo.Auth;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private final AuthService authService;
+
     @Autowired
-    private AuthService authService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
-    //로그인
+    /*
+    // 로그인
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Auth auth, HttpSession session) {
-        Auth loginUser = authService.login(auth.getEmail(), auth.getPassword());
-        if(loginUser != null) {
-            session.setAttribute("loginUser", loginUser);
-            return ResponseEntity.ok(loginUser);
-        } else {
-            return ResponseEntity.status(401).body("아이디 또는 비밀번호가 일치하지 않습니다.");
-        }
+    public Auth login(@RequestParam String email, @RequestParam String password) {
+        Auth auth = authService.login(email, password);
+        if(auth != null) return auth; // 로그인 성공 시 사용자 정보 반환
+        return null; // 실패 시 null 반환 (프론트에서 처리)
+    }*/
+
+    // 로그인
+    @PostMapping("/login")
+    public Auth login(@RequestBody LoginRequest request) {
+        return authService.login(request);
     }
 
-    //로그인 사용자 정보 확인 (POST)
-    @PostMapping("/me")
-    public ResponseEntity<?> getLoginUser(HttpSession session) {
-        Auth loginUser = (Auth) session.getAttribute("loginUser");
-        if (loginUser != null) {
-            return ResponseEntity.ok(loginUser);
-        } else {
-            return ResponseEntity.status(401).body("로그인 정보가 없습니다.");
-        }
-    }
-
-    //로그아웃 (POST)
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpSession session) {
-        session.invalidate();
-        return ResponseEntity.ok("로그아웃 되었습니다.");
-    }
 }

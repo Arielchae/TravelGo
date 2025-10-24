@@ -1,60 +1,48 @@
-package com.travelgo.model.vo;
+package com.example.travel_backend.model.vo;
 
 public class Auth {
-
-    private String memberId;     // 로그인할 아이디
-    private String memberPw;     // 비밀번호
-    private String memberName;   // 사용자 이름 (로그인 성공 후 표시용)
-    private String memberType;   // 사용자 유형 (예: USER, ADMIN)
+    private Long userId;        // USER_ID
+    private String email;       // EMAIL
+    private String password;    // PASSWORD
+    private String nickname;    // NICKNAME
+    private String socialType;  // SOCIAL_TYPE
 
     // 기본 생성자
     public Auth() {}
 
-    // 로그인 요청용 생성자
-    public Auth(String memberId, String memberPw) {
-        this.memberId = memberId;
-        this.memberPw = memberPw;
-    }
-
-    // 전체 필드 생성자 (선택)
-    public Auth(String memberId, String memberPw, String memberName, String memberType) {
-        this.memberId = memberId;
-        this.memberPw = memberPw;
-        this.memberName = memberName;
-        this.memberType = memberType;
+    // 전체 필드 생성자
+    public Auth(Long userId, String email, String password, String nickname, String socialType) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.socialType = socialType;
     }
 
     // Getter & Setter
-    public String getMemberId() {
-        return memberId;
-    }
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
-    public String getMemberPw() {
-        return memberPw;
-    }
-    public void setMemberPw(String memberPw) {
-        this.memberPw = memberPw;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getMemberName() {
-        return memberName;
-    }
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getMemberType() {
-        return memberType;
-    }
-    public void setMemberType(String memberType) {
-        this.memberType = memberType;
-    }
+    public String getNickname() { return nickname; }
+    public void setNickname(String nickname) { this.nickname = nickname; }
+
+    public String getSocialType() { return socialType; }
+    public void setSocialType(String socialType) { this.socialType = socialType; }
 
     @Override
     public String toString() {
-        return "Auth [memberId=" + memberId + ", memberName=" + memberName + ", memberType=" + memberType + "]";
+        return "Auth{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", socialType='" + socialType + '\'' +
+                '}';
     }
 }

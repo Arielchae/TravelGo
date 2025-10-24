@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.travel_backend.mapper.AuthMapper">
+
+    <resultMap id="authResultMap" type="com.example.travel_backend.model.vo.Auth">
+        <id property="userId" column="USER_ID"/>
+        <result property="email" column="EMAIL"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="nickname" column="NICKNAME"/>
+        <result property="socialType" column="SOCIAL_TYPE"/>
+    </resultMap>
+
+    <select id="selectByEmail" resultMap="authResultMap" parameterType="string">
+        SELECT USER_ID, EMAIL, PASSWORD, NICKNAME, SOCIAL_TYPE
+        FROM AUTH_TABLE
+        WHERE EMAIL = #{email}
+    </select>
+
+</mapper>
