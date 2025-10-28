@@ -15,6 +15,10 @@
         <input v-model="nickname" type="text" required />
       </div>
       <div>
+        <label>Name</label>
+        <input v-model="name" type="text" required />
+      </div>
+      <div>
         <label>Social Type</label>
         <select v-model="socialType">
           <option value="LOCAL">LOCAL</option>
@@ -34,6 +38,7 @@ import axios from 'axios'
 const email = ref('')
 const password = ref('')
 const nickname = ref('')
+const name = ref('')
 const socialType = ref('LOCAL')
 
 const submitSignup = async () => {
@@ -42,6 +47,7 @@ const submitSignup = async () => {
       email: email.value,
       password: password.value,
       nickname: nickname.value,
+      name: name.value,
       socialType: socialType.value,
     })
     console.log('signup res status:', res.status)
@@ -53,7 +59,6 @@ const submitSignup = async () => {
     }
   } catch (err) {
     console.error(err)
-    // 디버깅용 상세 출력
     console.error('Axios error:', err)
     console.error('Response data:', err.response?.data)
     console.error('Response status:', err.response?.status)
