@@ -37,6 +37,14 @@ public class MemberServiceImpl implements MemberService {
         member.setPassword(request.getPassword());
         member.setNickname(request.getNickname());
         member.setSocialType(request.getSocialType());
+        member.setName(request.getName());  // 필수! SignupRequest에서 받은 name 값을 Member VO에 반드시 설정해야 합니다. (null 허용 안하면 꼭 적어줌.)
+        // 2. null 허용 컬럼 처리 (옵션)
+        //    DB가 null을 허용하므로, 별도로 값을 설정하지 않으면 Java 기본값인 null이 유지됩니다.
+        //    만약 'LOCAL' 가입 시 role의 기본값을 'USER'로 설정하고 싶다면 다음과 같이 작성합니다.
+        // member.setRole("USER");
+        member.setUsername(request.getName()); // 예시: 이름을 username으로 사용
+        member.setRole("USER"); // 예시: 기본 권한 설정
+        member.setSocialId(null); // 로컬 회원가입이므로 null (DB에서 null 허용 시)
 
         int result = memberMapper.insertMember(member);
         if(result > 0) {

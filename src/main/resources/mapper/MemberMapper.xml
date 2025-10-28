@@ -19,10 +19,15 @@
         WHERE email = #{email}
     </select>
 
-    <insert id="signup" parameterType="com.example.travel_backend.controller.dto.SignupRequest">
-        INSERT INTO member (username, password, name, email, role, social_provider, social_id, created_at, updated_at)
-        VALUES (#{username}, #{password}, #{name}, #{email}, #{role}, #{socialProvider}, #{socialId}, NOW(), NOW())
+    <insert id="insertMember" parameterType="com.example.travel_backend.model.vo.Member">
+        INSERT INTO member (
+            username, email, password, name, nickname, role, social_type, social_id, created_at, updated_at
+        ) VALUES (
+                     #{username}, #{email}, #{password}, #{name}, #{nickname}, #{role}, #{socialType}, #{socialId}, NOW(), NOW()
+                 )
     </insert>
+
+
 
 </mapper>
 

@@ -4,14 +4,16 @@ public class SignupRequest {
     private String email;
     private String password;
     private String nickname;
+    private String name;
     private String socialType;
 
     public SignupRequest() {}
 
-    public SignupRequest(String email, String password, String nickname, String socialType) {
+    public SignupRequest(String email, String password, String nickname, String name, String socialType) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
+        this.name = name;
         this.socialType = socialType;
     }
 
@@ -23,6 +25,9 @@ public class SignupRequest {
 
     public String getNickname() { return nickname; }
     public void setNickname(String nickname) { this.nickname = nickname; }
+
+    public String getName() { return name; }       // 추가
+    public void setName(String name) { this.name = name; } // 추가
 
     public String getSocialType() { return socialType; }
     public void setSocialType(String socialType) { this.socialType = socialType; }
